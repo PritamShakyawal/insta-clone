@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const mongoose = require('mongoose');
+const plm = require("passport-local-mongoose");
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+mongoose.connect("mongodb://127.0.0.1:27017/instaclone");
 
-module.exports = router;
+const userSchema = mongoose.Schema({
+  username: String,
+  name: String,
+  email: String,
+  password: String,
+  profileImage: String,
+  bio: String,
+  posts: [{type: mongoose.Schema.Types.ObjectId, ref: "post"}],                          // It is an array of id's
+
+})
+
+userSchema.plugin(plm);    // Is line se hm serializer or deserializer user ko provide kr rhe hai.
+
+module.exports = mongoose.model("user", userSchema);   // Kisi or file k through is file mai hm create, read, update, delete kr payenge.
