@@ -3,11 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-<<<<<<< HEAD
-const expressSession = require('express-session');
-=======
 var expressSession = require('express-session');
->>>>>>> 920173667d39b42221dfbc256fe2b1e87fc58ca2
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -20,25 +16,19 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(expressSession({
-<<<<<<< HEAD
   resave:false,
   saveUninitialized: false,
-  secret: "hey hey hey"
-=======
+  secret: "hey hey hey",
   resave: false,
   saveUninitialized: false,
   secret: "heyheyehhdd"
->>>>>>> 920173667d39b42221dfbc256fe2b1e87fc58ca2
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(usersRouter.serializeUser());
-<<<<<<< HEAD
 passport.deserializeUser(usersRouter.deserializeUser());;
 
-=======
 passport.deserializeUser(usersRouter.deserializeUser());
->>>>>>> 920173667d39b42221dfbc256fe2b1e87fc58ca2
 
 app.use(logger('dev'));
 app.use(express.json());
